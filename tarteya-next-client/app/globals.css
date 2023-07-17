@@ -1,6 +1,51 @@
 body{
     margin: 0 auto;
     width: 100vw;
-    background: rgb(236, 235, 181);
      
+}
+@font-face {
+    font-family: MR;
+    src: url('./_fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: MM;
+    src: url('./_fonts/Montserrat-Medium.ttf');
+}
+@font-face {
+    font-family: MB;
+    src: url('./_fonts/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: MSB;
+    src: url('./_fonts/Montserrat-SemiBold.ttf');
+}
+@font-face {
+    font-family: ML;
+    src: url('./_fonts/Montserrat-Light.ttf');
+}
+@font-face {
+    font-family: MXL;
+    src: url('./_fonts/Montserrat-ExtraLight.ttf');
+}
+.MR{
+    font-family: MR;
+}
+.MM{
+    font-family: MM;
+}
+.MB{
+    font-family: MB;
+}
+.MSB{
+    font-family: MSB;
+}
+.ML{
+    font-family: ML;
+}
+.MXL{
+    font-family: MXL;
+}
+
+.page{
+    color: rgb(0, 255, 17);
 }

@@ -1,6 +1,6 @@
 const MainPage = () =>{
   return(
-    <div>HELLO THERE!</div>
+    <div className="page MB ">example</div>
   );
 }
 
