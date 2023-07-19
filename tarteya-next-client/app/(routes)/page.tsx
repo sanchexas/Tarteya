@@ -1,6 +1,15 @@
+import Header from "../_layouts/Header";
+import RootLayout from "./layout";
+import MainContainer from "../_layouts/MainConteiner";
+import Footer from "../_layouts/Footer";
+
 const MainPage = () =>{
   return(
-    <div className="page MB ">example</div>
+    <RootLayout>
+      <Header/>
+      <MainContainer/>
+      <Footer/>
+    </RootLayout>
   );
 }
 
