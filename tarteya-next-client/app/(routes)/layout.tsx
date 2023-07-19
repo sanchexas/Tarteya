@@ -1,3 +1,5 @@
+import Footer from '../_layouts/Footer';
+import Header from '../_layouts/Header'
 import '../globals.css'
 import type { Metadata } from 'next'
 // import { Inter, Montserrat } from 'next/font/google'
@@ -12,7 +14,13 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <Header/>
+        <main>
+        {children}
+        </main>
+        <Footer/>
+      </body>
     </html>
   );
 }

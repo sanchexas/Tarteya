@@ -1,15 +1,10 @@
-import Header from "../_layouts/Header";
-import RootLayout from "./layout";
-import MainContainer from "../_layouts/MainConteiner";
-import Footer from "../_layouts/Footer";
+/* 
+Здесь будет страница приветствия, фетчинг данных и т.д.
 
+*/
 const MainPage = () =>{
   return(
-    <RootLayout>
-      <Header/>
-      <MainContainer/>
-      <Footer/>
-    </RootLayout>
+    <div>fdff</div>
   );
 }
 
