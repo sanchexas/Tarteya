@@ -53,9 +53,6 @@ body{
 .MXL{
     font-family: MXL;
 }
-.btn__default{
-
-}
 footer{
     width: 100%;
     height: 100px;
@@ -64,12 +61,19 @@ footer{
 header{
     width: 100%;
     height: 100px;
-    background: purple;
+    /* background: purple; */
     position: sticky;
     top: 0px;
+    display: flex;
+    align-items: center;
 }
 main{
     width: 70%;
     min-height: 80vh;
     background: green;
 }
+.header__nav{
+    display: flex;
+    gap: 30px;
+}
+

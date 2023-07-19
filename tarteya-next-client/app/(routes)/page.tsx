@@ -4,7 +4,7 @@
 */
 const MainPage = () =>{
   return(
-    <div>fdff</div>
+    <div>MAIN PAGE</div>
   );
 }
 

@@ -1,10 +1,11 @@
-import Link from "next/link";
+import HeadNav from "../_components/HeadNav";
+import Logo from "../_components/Logo";
 
 const Header = () =>{
     return(
         <header>
-            <Link href='/about'>Agbout</Link>
-            <Link href='/tarteya'>Tarteya</Link>
+            <Logo/>
+            <HeadNav/>
         </header>
     );
 }
