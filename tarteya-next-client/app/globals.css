@@ -59,7 +59,7 @@ footer{
     background: yellow;
 }
 header{
-    width: 100%;
+    width: 90%;
     height: 100px;
     /* background: purple; */
     position: sticky;
