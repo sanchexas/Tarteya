@@ -6,7 +6,6 @@ body{
     align-items: center;
     position: relative;
 }
-
 /* fonts */
 @font-face {
     font-family: MR;
@@ -94,6 +93,9 @@ nav a{
     transition: all 0.3s;
 }
 nav a:hover{
+    color: #F08A10;
+}
+.active__nav__item{
     color: #F08A10;
 }
 ::-webkit-scrollbar {
