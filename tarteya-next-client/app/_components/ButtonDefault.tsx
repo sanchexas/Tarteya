@@ -7,7 +7,7 @@ type BtnDefaultProps = {
 
 const ButtonDefault = ({content, func}: BtnDefaultProps) =>{
     return(
-        <button onClick={func} className="brn__default">
+        <button onClick={func} className="btn__default MR">
             {content}
         </button>
     );
