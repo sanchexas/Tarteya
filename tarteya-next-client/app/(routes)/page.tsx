@@ -7,14 +7,17 @@ import Link from "next/link";
 const MainPage = () =>{
   return(
     <div style={{display: "flex", flexDirection: "column"}}>
+        <div className="TESTDIV">
+
+        </div>
         <div id='1' className="TESTDIV">
-1
+          <h1>Тартея</h1>
         </div>
         <div id='2' className="TESTDIV">
-2
+          <h1>Выпечка</h1>
         </div>
         <div id='3' className="TESTDIV">
-3
+          <h1>Напитки</h1>
         </div>
     </div>
   );

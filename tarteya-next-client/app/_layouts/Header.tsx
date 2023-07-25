@@ -1,14 +1,22 @@
-'use client' // удалить!
-import ButtonDefault from "../_components/ButtonDefault";
+'use client'
+import { useEffect, useState } from "react";
 import HeadNav from "../_components/HeadNav";
-import Logo from "../_components/Logo";
+import HeadNavActions from "../_components/HeadNavActions";
 
 const Header = () =>{
-    
+    const [scroll, setScroll] = useState(window.screenY);
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+      };
+    useEffect(()=>{
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    },[]);
     return(
-        <header>
+        <header className={scroll > 75 ? 'header__shadow' : ''}>
             <div className="header__container">
                 <HeadNav/>
+                <HeadNavActions/>
             </div>
         </header>
     );

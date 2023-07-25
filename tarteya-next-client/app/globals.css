@@ -6,6 +6,7 @@ body{
     align-items: center;
     position: relative;
 }
+
 /* fonts */
 @font-face {
     font-family: MR;
@@ -34,6 +35,9 @@ body{
 *{
     font-family: MR;
 }
+h1{
+    margin: 0;
+}
 .MR{
     font-family: MR;
 }
@@ -56,11 +60,11 @@ footer{
     width: 100%;
     height: 100px;
     border-top: #F08A10 solid 2px;
+    margin-top: 100px;
 }
 .TESTDIV{
     width: 100%;
     height: 500px;
-    background: yellow;
 }
 header{
     width: 100%;
@@ -96,6 +100,10 @@ nav a{
 nav a:hover{
     color: #F08A10;
 }
+.header__shadow{
+    transition: all 0.3s;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.075);
+}
 .active__nav__item{
     color: #F08A10;
 }
@@ -105,17 +113,45 @@ nav a:hover{
 }
 ::-webkit-scrollbar-thumb{
     width: 10px;
-    background: #F08A10;
+    background: #faaa47;
     border-radius: 10px;
     right: 2px;
 }
 .header__container{
-    width: 80%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__nav__actions{
+    display: flex;
+    width: 30%;
+    /* border: #dd1010 1px solid; */
+}
+.cart__btn{
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+.cart__btn span{
+    margin-left: 7px;
+}
+.cart__btn:hover{
+    color: #F08A10;
+}
+.cart__btn:hover svg path{
+    stroke: #dd8110;
 }
 .header__nav{
     display: flex;
     gap: 30px;
     position: sticky;
+    width: 50%;
+    /* border: #dd1010 1px solid; */
 }
 .logo{
     width: 100%;
