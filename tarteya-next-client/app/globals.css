@@ -79,6 +79,7 @@ header{
     padding-top: 20px;
     padding-bottom: 17px;
     gap: 25px;
+    overflow: hidden;
 }
 main{
     width: 70%;
@@ -172,4 +173,14 @@ nav a:hover{
 }
 .btn__default:hover{
     background: #dd8110;
+}
+.testspan{
+    position: absolute;
+    left: -100px;
+    top: 35px;
+    transition: all 0.2s;
+}
+.testspanactive{
+    left: 60px;
+
 }
