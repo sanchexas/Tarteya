@@ -16,6 +16,7 @@ const Header = () =>{
         }
     });
     return(
+        
         <header className={scroll > 75 ? 'header__shadow' : ''}>
             <Image alt="" width={100} height={20} src="/tarteya_logo.svg" className={scroll > 75 ? 'testspan testspanactive' : 'testspan'}/>
             <div className="header__container">
