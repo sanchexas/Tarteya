@@ -174,13 +174,14 @@ nav a:hover{
 .btn__default:hover{
     background: #dd8110;
 }
-.testspan{
+.headlogo{
     position: absolute;
     left: -100px;
     top: 35px;
     transition: all 0.2s;
+    cursor: pointer;
 }
-.testspanactive{
+.headlogo__active{
     left: 60px;
 
 }

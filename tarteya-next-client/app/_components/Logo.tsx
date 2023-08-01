@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Logo = () =>{
     return(
-        <div className="logo">
+        <div className="logo" id="logo">
             <Link href='/'>
                 <Image src='/tarteya_logo.svg' alt='tarteya-logo' width={200} height={40}/>
             </Link>
