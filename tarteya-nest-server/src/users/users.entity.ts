@@ -10,4 +10,6 @@ export class User{
     surname: string
     @Column({length: 100, nullable: true})
     patronymic: string
+    @Column({length: 12})
+    phone: string
 }
