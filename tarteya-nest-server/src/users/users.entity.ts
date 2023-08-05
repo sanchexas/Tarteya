@@ -8,12 +8,12 @@ export class User{
     name: string
     @Column({length: 100})
     surname: string
-    @Column({length: 100, nullable: true})
+    @Column({length: 60, nullable: true})
     patronymic: string
     @Column({length: 12})
     phone: string
     @Column({length: 150})
     email: string
-    @Column({length: 500})
+    @Column({length: 300})
     password: string
 }

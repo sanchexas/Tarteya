@@ -10,7 +10,7 @@ export class UsersService {
         @InjectRepository(User)
         private usersRepository: Repository<User>,
       ) {}
-    async create(body: CreateUserDto){
-        await this.usersRepository.save(body)
+    async create(body: CreateUserDto): Promise<void>{
+        await this.usersRepository.save(body);
     }
 }
