@@ -12,4 +12,8 @@ export class User{
     patronymic: string
     @Column({length: 12})
     phone: string
+    @Column({length: 150})
+    email: string
+    @Column({length: 500})
+    password: string
 }
