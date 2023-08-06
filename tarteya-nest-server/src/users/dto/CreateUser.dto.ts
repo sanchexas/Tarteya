@@ -13,8 +13,9 @@ export class CreateUserDto {
     @MaxLength(60, {message: "Отчество не должно превышать 60 символов"})
     @MinLength(2, {message: "Отчество не должно быть менее 2-х символов"})
     patronymic?: string
+    @IsOptional()
     @IsEmail({}, {message: "Некорректный e-mail"})
-    email: string
+    email?: string
     @IsPhoneNumber('RU', {message: "Некорректный номер телефона"})
     phone: string
     @IsNotEmpty()
