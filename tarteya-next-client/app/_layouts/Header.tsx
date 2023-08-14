@@ -9,7 +9,7 @@ const Header = () =>{
     const [scroll, setScroll] = useState(typeof window === "undefined" ? 0 : window.scrollY);
     const handleScroll = () => {
         setScroll(typeof window === "undefined" ? 0 : window.scrollY);
-    };
+    };  
     useEffect(()=>{
         if(typeof window !== "undefined"){
             window.addEventListener("scroll", handleScroll);
