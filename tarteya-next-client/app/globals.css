@@ -208,4 +208,12 @@ nav a:hover{
     height: 100vh;
     background: rgba(0, 0, 0, 0.445);
     z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mdl__content{
+    border-radius: 5px;
+    padding: 30px 30px;
+    background: white;
 }

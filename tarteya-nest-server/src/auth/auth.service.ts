@@ -12,8 +12,11 @@ export class AuthService {
 
     async signIn(data: SignInDto){
         const user = await this.userService.findOne(data.phone);
-        if (user?.password !== data.password) {
-            throw new UnauthorizedException({}, "Неверные данные (от auth.service.ts)");
+        // console.log(`data password: ${data.password}`)
+        // console.log(`user password: ${user.password}`)
+        // console.log(user)
+        if (user.password !== data.password) {
+            throw new UnauthorizedException({message: "Неверные данные (от auth.service.ts)"});
         }
         const payload = { sub: user.id_user, phone: user.phone };
         return {

@@ -3,8 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './users.entity';
 import { CreateUserDto } from './dto/CreateUser.dto';
-import { AuthUserDto } from './dto/AuthUserDto.dto';
-
 @Injectable()
 export class UsersService {
     constructor(
@@ -17,7 +15,7 @@ export class UsersService {
     }
     async findOne(phone: string): Promise<User>{ // change later
         return this.usersRepository.findOne({
-            select: ['id_user'], where: {'phone': phone}
-        })
+            select: [], where: {'phone': phone}
+        });
     }
 }

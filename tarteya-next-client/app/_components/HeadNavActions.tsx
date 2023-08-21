@@ -9,8 +9,7 @@ const HeadNavActions = () =>{
     return(
         <div className="header__nav__actions">
             <CartButton/>
-            <ButtonDefault content="modalTest" func={()=> setShowWindow("signin")}/>
-            
+            <ButtonDefault content="modalTest" func={()=> setShowWindow("cart")}/>
         </div>
     );
 }
