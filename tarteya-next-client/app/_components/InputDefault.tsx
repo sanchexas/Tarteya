@@ -1,6 +1,9 @@
 const InputDefault = () =>{
     return(
-        <input type="text" />
+        <div className="form__default__item">
+            <label htmlFor="">sex</label>
+            <input type="text" />
+        </div>
     );
 }
 

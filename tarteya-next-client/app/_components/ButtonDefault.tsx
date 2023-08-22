@@ -1,14 +1,16 @@
 'use client'
 
-type BtnDefaultProps = {
-    content: string
-    func: () => void 
-}
+import { BtnDefaultProps } from "../_types/types";
 
-const ButtonDefault = ({content, func}: BtnDefaultProps) =>{
+const ButtonDefault = (props: BtnDefaultProps) =>{
     return(
-        <button onClick={func} className="btn__default MR">
-            {content}
+        <button 
+            onClick={props.func} 
+            className="btn__default MR" 
+            style={{margin: props.margin}}
+            type={props.isSubmit ? "submit" : "button"}
+        >
+            {props.content}
         </button>
     );
 }

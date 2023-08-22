@@ -211,9 +211,32 @@ nav a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .mdl__content{
     border-radius: 5px;
     padding: 30px 30px;
     background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form__default__item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 17px;
+    padding: 5px;
+}
+.form__default__item input{
+    border-radius: 5px;
+    border:#dd8110 2px solid;
+    outline: none;
+    font-size: 20px;
+    width: 100%;   
+}
+.form__default{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
