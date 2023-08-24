@@ -7,7 +7,7 @@ const FormDefault = (props: FormDefaultType) =>{
             method={props.method} 
             encType={props.isMultipartData ? 'multipart/form-data' : ''}
         >
-            <h3>{props.title}</h3>
+            <h2 className="form__title__default">{props.title}</h2>
             {props.children}
         </form>
     );

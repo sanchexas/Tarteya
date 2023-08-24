@@ -12,8 +12,8 @@ export type BtnDefaultProps = {
 }
 export type InputDefaultType = {
     type: string
-    setChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     label: string
+    setChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
     widthPercents?: number
 }

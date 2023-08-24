@@ -9,7 +9,7 @@ export default function ContextProvider({children}: any){
 const [showWindow, setShowWindow] = useState<ShowWindow>(false);
 
 /**
- *  В конструкции return можно оборочивать контекст-провайдеры друг в друга. 
+ *  В конструкции return можно оборачивать контекст-провайдеры друг в друга. 
  *  Для каждого контекста необходимо писать свой кастомный хук. 
  */
     return(

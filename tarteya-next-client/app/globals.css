@@ -6,7 +6,6 @@ body{
     align-items: center;
     position: relative;
 }
-
 /* fonts */
 @font-face {
     font-family: MR;
@@ -35,8 +34,13 @@ body{
 *{
     font-family: MR;
 }
-h1{
+h1, h2, h3, h4, h5, h6{
     margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 .MR{
     font-family: MR;
@@ -230,13 +234,23 @@ nav a:hover{
 }
 .form__default__item input{
     border-radius: 5px;
-    border:#dd8110 2px solid;
+    border:#dd8110 1px solid;
     outline: none;
     font-size: 20px;
-    width: 100%;   
+    width: 100%;
+    height: 5vh;   
+}
+.form__default__item label{
+    margin-bottom: 5px;
 }
 .form__default{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.form__title__default{
+    font-family: MM;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 22px;
 }
