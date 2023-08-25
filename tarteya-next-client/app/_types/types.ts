@@ -17,6 +17,7 @@ export type InputDefaultType = {
     name?: string
     value?: string | number
     setChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    styles?: React.CSSProperties
     placeholder?: string
     widthPercents?: number
 }
@@ -27,4 +28,10 @@ export type FormDefaultType = {
     method?: string
     setSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
     styles?: React.CSSProperties
+}
+export type SignInType = {
+    show: boolean
+}
+export type SignUpType = {
+    show: boolean
 }

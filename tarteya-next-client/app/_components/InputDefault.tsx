@@ -5,7 +5,7 @@ import { InputDefaultType } from "../_types/types";
  */
 const InputDefault = (props: InputDefaultType) =>{
     return(
-        <div className="form__default__item" style={{width: `${props.widthPercents}%`}}>
+        <div className="form__default__item" style={{width: `${props.widthPercents}%`, ...props.styles}}>
             <label htmlFor={`#${props.idForLabel}`}>{props.label}</label>
             <div>
                 <input

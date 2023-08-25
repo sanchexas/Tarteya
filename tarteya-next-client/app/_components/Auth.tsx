@@ -4,6 +4,8 @@ import { useState } from "react";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 const Auth = () =>{
     const [isSignIn, setIsSignIn] = useState<boolean>(true);
@@ -31,33 +33,8 @@ const Auth = () =>{
                     Регистрация
                 </button>
             </div>
-            <FormDefault 
-                isMultipartData={false} 
-                styles={{width: "80%", display: isSignIn ? "block" : "none"}}
-            >
-                <InputDefault label="Номер телефона" type="phone" idForLabel="0"/>
-                <InputDefault idForLabel="1" label="Пароль" type="password"/>
-                <ButtonDefault 
-                    content="Войти" 
-                    isSubmit={true} 
-                    func={()=> alert("fd")} 
-                    margin="10px"
-                />
-            </FormDefault>
-            <FormDefault 
-                isMultipartData={false} 
-                styles={{width: "80%", display: !isSignIn ? "block" : "none"}}
-            >
-                <InputDefault idForLabel="2" label="Номер телефона" type="text"/>
-                <InputDefault idForLabel="3" label="Пароль" type="password"/>
-                <InputDefault idForLabel="4" label="Повтор пароля" type="text"/>
-                <ButtonDefault 
-                    content="Зарегистрироваться" 
-                    isSubmit={true} 
-                    func={()=> alert("fd")} 
-                    margin="10px"
-                />
-            </FormDefault>
+            <SignIn show={isSignIn}/>
+            <SignUp show={!isSignIn}/>
         </div>
     );
 }
