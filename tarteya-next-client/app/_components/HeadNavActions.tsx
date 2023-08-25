@@ -1,7 +1,6 @@
 import { useCustomContext } from "../_context/Context";
 import ButtonDefault from "./ButtonDefault";
 import CartButton from "./CartButton";
-import ModalWindow from "./ModalWindow";
 
 const HeadNavActions = () =>{
     const {setShowWindow} = useCustomContext()
@@ -9,7 +8,7 @@ const HeadNavActions = () =>{
     return(
         <div className="header__nav__actions">
             <CartButton/>
-            <ButtonDefault content="modalTest" func={()=> setShowWindow("signup")} isSubmit={false}/>
+            <ButtonDefault content="modalTest" func={()=> setShowWindow("auth")} isSubmit={false}/>
         </div>
     );
 }

@@ -6,7 +6,7 @@ const ButtonDefault = (props: BtnDefaultProps) =>{
     return(
         <button 
             onClick={props.func} 
-            className="btn__default MR" 
+            className="btn__default" 
             style={{margin: props.margin}}
             type={props.isSubmit ? "submit" : "button"}
         >

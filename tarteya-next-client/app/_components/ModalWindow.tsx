@@ -3,8 +3,7 @@
 import { CSSTransition } from 'react-transition-group';
 import { useCustomContext } from '../_context/Context';
 import { useEffect, useRef, useState } from 'react';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
+import Auth from './Auth';
 import Cart from './Cart';
 
 const ModalWindow = () =>{
@@ -14,13 +13,9 @@ const ModalWindow = () =>{
     const nodeRef = useRef(null);
     useEffect(()=>{
         switch(showWindow){
-            case "signup":
+            case "auth":
                 setIsWindow(true);
-                setWindowComponent(<SignUp/>);
-                break;
-            case "signin":
-                setIsWindow(true);
-                setWindowComponent(<SignIn/>);
+                setWindowComponent(<Auth/>);
                 break;
             case "cart":
                 setIsWindow(true);

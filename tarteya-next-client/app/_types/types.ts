@@ -1,5 +1,5 @@
 
-export type ShowWindow = "signup" | "signin" | "cart" | false;
+export type ShowWindow = "auth" | "cart" | false;
 export type ModalContextType = {
     showWindow: ShowWindow
     setShowWindow: React.Dispatch<React.SetStateAction<ShowWindow>>
@@ -13,6 +13,9 @@ export type BtnDefaultProps = {
 export type InputDefaultType = {
     type: string
     label: string
+    idForLabel: string
+    name?: string
+    value?: string | number
     setChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     placeholder?: string
     widthPercents?: number
@@ -23,4 +26,5 @@ export type FormDefaultType = {
     title?: string
     method?: string
     setSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
+    styles?: React.CSSProperties
 }
