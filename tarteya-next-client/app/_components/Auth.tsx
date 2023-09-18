@@ -1,9 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import ButtonDefault from "./ButtonDefault";
-import FormDefault from "./FormDefault";
-import InputDefault from "./InputDefault";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 

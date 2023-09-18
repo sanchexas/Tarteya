@@ -34,7 +34,7 @@ const SignIn = (props: SignInType) =>{
                 </span>
             .</span> 
             {/* СДЕЛАТЬ INPUTDEFAULT для типа Телефон и Email! */}
-            <InputDefault label={isByEmail ? "E-mail" : "Номер телефона"} type="text" idForLabel="0"/>
+            <InputDefault label={isByEmail ? "E-mail" : "Номер телефона"} type={isByEmail ? "email" : "tel"} idForLabel="0"/>
             <InputDefault idForLabel="1" label="Пароль" type="password" styles={{display: !isByEmail ? "none" : ""}}/>
             <ButtonDefault 
                 content="Войти" 

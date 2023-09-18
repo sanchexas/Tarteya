@@ -11,7 +11,7 @@ export type BtnDefaultProps = {
     margin?: string
 }
 export type InputDefaultType = {
-    type: string
+    type: "tel" | "password" | "text" | "email"
     label: string
     idForLabel: string
     name?: string

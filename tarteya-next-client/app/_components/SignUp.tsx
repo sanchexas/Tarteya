@@ -9,7 +9,7 @@ const SignUp = (props: SignUpType) =>{
             isMultipartData={false} 
             styles={{width: "80%", display: props.show ? "flex" : "none"}}
         >
-            <InputDefault idForLabel="2" label="Номер телефона" type="text"/>
+            <InputDefault idForLabel="2" label="Номер телефона" type="tel"/>
             <InputDefault idForLabel="3" label="E-mail" type="text"/>
             <InputDefault idForLabel="4" label="Пароль" type="password"/>
             <InputDefault idForLabel="5" label="Повтор пароля" type="text"/>
