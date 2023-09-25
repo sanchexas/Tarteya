@@ -1,3 +1,4 @@
+import { ComponentPropsWithoutRef, ReactElement, ReactNode, ReactSVG, ReactSVGElement, SVGProps } from "react";
 
 export type ShowWindow = "auth" | "cart" | false;
 export type ModalContextType = {
@@ -34,4 +35,8 @@ export type SignInType = {
 }
 export type SignUpType = {
     show: boolean
+}
+export type IconButtonType = {
+    title: string
+    svgElement: ReactElement<SVGElement>
 }

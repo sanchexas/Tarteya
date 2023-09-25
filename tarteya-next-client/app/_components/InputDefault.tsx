@@ -7,7 +7,6 @@ import InputMask from "react-input-mask";
  */
 const InputDefault = (props: InputDefaultType) =>{
     const telInputRef = useRef<HTMLInputElement>(null);
-    // УСТАНОВИТЬ react-input-mask
     if(props.type === 'tel'){
         return(
             <div className="form__default__item" style={{width: `${props.widthPercents}%`, ...props.styles}}>
@@ -18,7 +17,6 @@ const InputDefault = (props: InputDefaultType) =>{
                         value={props.value} 
                         onChange={props.setChange}
                     >
-
                     </InputMask>
                 </div>
             </div>

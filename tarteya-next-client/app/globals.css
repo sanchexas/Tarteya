@@ -130,11 +130,11 @@ nav a:hover{
 }
 .header__nav__actions{
     display: flex;
-    width: 30%;
+    gap: 20px;
     align-items: center;
     /* border: #dd1010 1px solid; */
 }
-.cart__btn{
+.icon__btn{
     border: none;
     background: none;
     display: flex;
@@ -143,13 +143,13 @@ nav a:hover{
     font-size: 15px;
     transition: all 0.3s;
 }
-.cart__btn span{
-    margin-left: 7px;
+.icon__btn span{
+    font-family: MM;
 }
-.cart__btn:hover{
+.icon__btn:hover{
     color: #F08A10;
 }
-.cart__btn:hover svg path{
+.icon__btn:hover svg path{
     stroke: #dd8110;
 }
 .header__nav{
