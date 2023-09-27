@@ -39,4 +39,5 @@ export type SignUpType = {
 export type IconButtonType = {
     title: string
     svgElement: ReactElement<SVGElement>
+    handler: (event?: React.MouseEvent<HTMLButtonElement>) => void
 }
