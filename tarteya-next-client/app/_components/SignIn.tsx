@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { SignInType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
@@ -8,11 +8,16 @@ import InputDefault from "./InputDefault";
 
 const SignIn = (props: SignInType) =>{
     const [isByEmail, setIsByEmail] = useState<boolean>(false);
+    const [phone, setPhone] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('')
+    const inputRef = useRef(null);
     const btnHandler = () =>{
         if(!isByEmail){
-
+            console.log(phone)
         }else{
-
+            console.log(email)
+            console.log(password)
         }
     }
     return(
@@ -33,9 +38,19 @@ const SignIn = (props: SignInType) =>{
                     {!isByEmail ? "E-mail" : "Телефона"}
                 </span>
             .</span> 
-            {/* СДЕЛАТЬ INPUTDEFAULT для типа Телефон и Email! */}
-            <InputDefault label={isByEmail ? "E-mail" : "Номер телефона"} type={isByEmail ? "email" : "tel"} idForLabel="0"/>
-            <InputDefault idForLabel="1" label="Пароль" type="password" styles={{display: !isByEmail ? "none" : ""}}/>
+            <InputDefault 
+                label={isByEmail ? "E-mail" : "Номер телефона"} 
+                type={isByEmail ? "email" : "tel"}
+                setChange={(e)=>{
+                    isByEmail ? setEmail(e.target.value) : setPhone(e.target.value)
+                }} 
+                idForLabel="0"/>
+            <InputDefault 
+                idForLabel="1" 
+                label="Пароль" 
+                type="password" 
+                setChange={(e)=>setPassword(e.target.value)}
+                styles={{display: !isByEmail ? "none" : ""}} />
             <ButtonDefault 
                 content="Войти" 
                 isSubmit={false} 

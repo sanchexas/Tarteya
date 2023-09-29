@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactElement, ReactNode, ReactSVG, ReactSVGElement, SVGProps } from "react";
+import { ComponentPropsWithoutRef, LegacyRef, ReactElement, ReactNode, ReactSVG, ReactSVGElement, SVGProps } from "react";
 
 export type ShowWindow = "auth" | "cart" | false;
 export type ModalContextType = {
@@ -15,6 +15,7 @@ export type InputDefaultType = {
     type: "tel" | "password" | "text" | "email"
     label: string
     idForLabel: string
+    reff?: LegacyRef<HTMLInputElement>
     name?: string
     value?: string | number
     setChange?: (e: React.ChangeEvent<HTMLInputElement>) => void

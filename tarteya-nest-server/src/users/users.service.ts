@@ -13,8 +13,9 @@ export class UsersService {
     async create(body: CreateUserDto): Promise<void>{
         await this.usersRepository.save(body);
     }
-    async findOne(phone: string): Promise<User>{ // change later
-        return this.usersRepository.findOne({
+    async findByPhone(phone: string): Promise<User>{
+        
+        return await this.usersRepository.findOne({
             select: [], where: {'phone': phone}
         });
     }

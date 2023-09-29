@@ -11,16 +11,15 @@ export class AuthService {
     ){}
 
     async signIn(data: SignInDto){
-        const user = await this.userService.findOne(data.phone);
-        // console.log(`data password: ${data.password}`)
-        // console.log(`user password: ${user.password}`)
-        // console.log(user)
-        if (user.password !== data.password) {
-            throw new UnauthorizedException({message: "Неверные данные (от auth.service.ts)"});
+        const user = await this.userService.findByPhone(data.phone)
+        if(user && user.password === data.password && user.phone === data.phone){
+            const payload = { id: user.id_user, phone: user.phone };
+            return {
+                access_token: await this.jwtService.signAsync(payload),
+                refresh_token: await this.jwtService.signAsync(payload, {expiresIn: "1d"})
+            };
+        }else{
+            throw new UnauthorizedException({message: "Неверный телефон или пароль"});
         }
-        const payload = { sub: user.id_user, phone: user.phone };
-        return {
-            access_token: await this.jwtService.signAsync(payload),
-        };
     }
 }
