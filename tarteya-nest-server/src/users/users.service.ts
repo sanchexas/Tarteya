@@ -11,10 +11,12 @@ export class UsersService {
       ) {}
 
     async create(body: CreateUserDto): Promise<void>{
-        await this.usersRepository.save(body);
+        if(!body.role){
+            body.role = 3;                      // сетим по умолчанию роль обычного пользователя
+            await this.usersRepository.save(body);
+        }
     }
     async findByPhone(phone: string): Promise<User>{
-        
         return await this.usersRepository.findOne({
             select: [], where: {'phone': phone}
         });

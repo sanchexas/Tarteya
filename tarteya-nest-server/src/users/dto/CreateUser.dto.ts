@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, MaxLength, Min, MinLength } from "class-validator";
+import { IsEmail, IsNotEmpty, IsNumber, IsOptional, IsPhoneNumber, MaxLength, Min, MinLength } from "class-validator";
 
 export class CreateUserDto {
     @IsNotEmpty({message: "Введите имя"})
@@ -22,4 +22,6 @@ export class CreateUserDto {
     @MaxLength(300, {message: "Пароль не должен содержать больше 300 символов"})
     @MinLength(8, {message: "Пароль не должен быть менее 8 символов"})
     password: string
+    @IsOptional()
+    role: number
 }

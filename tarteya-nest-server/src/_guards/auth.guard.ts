@@ -15,7 +15,7 @@ import {
       const request = context.switchToHttp().getRequest();
       const token = this.extractTokenFromHeader(request);
       if (!token) {
-        throw new UnauthorizedException({message: "Ошибка: Отсутствие токена."});
+        throw new UnauthorizedException({message: "Токен отсутствует"});
       }
       try {
         const payload = await this.jwtService.verifyAsync(
@@ -24,11 +24,10 @@ import {
             secret: process.env.JWT_SECRET
           }
         );
-        // 💡 We're assigning the payload to the request object here
-        // so that we can access it in our route handlers
+        console.log(payload)
         request['user'] = payload;
       } catch {
-        throw new UnauthorizedException({message: "Токен просрочен"});
+        throw new UnauthorizedException({message: "Неверный либо просроченный токен"});
       }
       return true;
     }
