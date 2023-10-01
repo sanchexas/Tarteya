@@ -1,5 +1,5 @@
 import { Role } from 'src/roles/roles.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Index } from 'typeorm';
 
 @Entity()
 export class User{
@@ -18,5 +18,6 @@ export class User{
     @Column({length: 300})
     password: string
     @ManyToOne(()=>Role, (role)=> role.user, {nullable: false})
+    @Index('role_id_idx')
     role: Role | number
 }

@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
-import { SignInDto } from './dto/SignInDto.dto';
+import { SignInDto } from './_dto/SignIn.dto';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +19,7 @@ export class AuthService {
                 refresh_token: await this.jwtService.signAsync(payload, {expiresIn: "1d"})
             };
         }else{
-            throw new UnauthorizedException({message: "Неверный телефон или пароль"});
+            throw new UnauthorizedException({message: "Неверные данные"});
         }
     }
 }
