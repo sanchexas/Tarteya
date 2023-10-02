@@ -4,6 +4,7 @@ import { UsersService } from 'src/users/users.service';
 import { SignInPhoneDto } from './_dto/SignPhone.dto';
 import { totp } from 'otplib';
 import { SmsAero, SmsAeroError, SmsAeroHTTPError  } from 'smsaero';
+import { ApiErrorCodes } from 'src/_errors/errors.status';
 
 @Injectable()
 export class AuthService {
@@ -22,32 +23,39 @@ export class AuthService {
                 refresh_token: await this.jwtService.signAsync(payload, {expiresIn: "1d"})
             };
         }else{
-            throw new UnauthorizedException({message: "Неверные данные"});
+            return {
+                message: ["Неверные данные"], 
+                statusCode: ApiErrorCodes.AUTH_ERROR_CODE
+            };
         }
     }
+    /**
+     *  1) проверка на существование телефона в базе userService
+     *  2) генерация токена
+     *  3) отправка смс
+     */
     async loginByPhone(data: SignInPhoneDto){
-        /**
-         *  1) проверка на существование телефона в базе userService
-         *  2) генерация токена
-         *  3) отправка смс
-         */
         const tp = this.trimPhone(data.phone);
         console.log(tp)
         const userExist = await this.userService.findByPhone(tp);
         if(userExist){
             const token = this.generateTokenTotp();
             this.sendSmsWithToken(token, tp);
+            return true;
         }else{
-            throw new UnauthorizedException({message: "Пользователя с таким номером телефона не существует"});
+            return {
+                message: ["Пользователя с таким номером телефона не существует"], 
+                statusCode: ApiErrorCodes.AUTH_ERROR_CODE
+            };
         }
     }
     async loginByEmail(){
 
-    }
+    } 
     private generateTokenTotp(): string{
         totp.options = { // настройка двойной аут.
             digits: 4,  // количество цифр в токене
-            step: 120, // время в секундах, через которое токен будет не актуален
+            step: 120, // время в секундах, через которое сгенерится новый токен
             window: 3, // одно window = step. Токен обновится но предыдущий будет актуален столько, сколько указано окон
         }; // В целом токен живет 6 минут, но новый генерится каждые 120 секунд
         return totp.generate(this.secret);
@@ -57,7 +65,10 @@ export class AuthService {
         if(verify){
             return true;
         }else{
-            throw new UnauthorizedException({message: "Неверный код, попробуйте ввести снова"});
+            return {
+                message: ["Неверный код, попробуйте ввести снова"],
+                statusCode: ApiErrorCodes.AUTH_ERROR_CODE
+            };
         }
     }
     private sendSmsWithToken(token: string, phone: string){

@@ -20,8 +20,14 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('loginbyphone')
   loginByPhone(@Body() body: SignInPhoneDto, @Res() res: Response){
-    res.send(this.authService.loginByPhone(body));
+    this.authService.loginByPhone(body).then(response=>{
+      res.send(response);
+    });
   } 
+  @Get('test')
+  testMethod(@Res() res: Response){
+      res.send({massege: "fdssddsdf"});
+  }
   @HttpCode(HttpStatus.OK) 
   @Post('verifytoken')        // Если возвращает true то надо кинуть аксес токен
   verifyToken(@Body() body: {user_token: string}, @Res() res: Response){

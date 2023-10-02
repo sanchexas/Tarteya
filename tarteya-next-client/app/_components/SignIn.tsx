@@ -5,16 +5,24 @@ import { SignInType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
+import { AuthController } from "../_controllers/AuthController";
+import Axios from 'axios';
 
 const SignIn = (props: SignInType) =>{
     const [isByEmail, setIsByEmail] = useState<boolean>(false);
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('')
-    const inputRef = useRef(null);
+    const [password, setPassword] = useState<string>('');
+    const authController = new AuthController();
     const btnHandler = () =>{
         if(!isByEmail){
-            console.log(phone)
+            // Axios.defaults.withCredentials = true
+            Axios.post('http://localhost:3005/auth/loginbyphone', {phone: phone}).then((response: any)=>{
+                console.log(response.data)
+            })
+            // fetch('http://localhost:3005/auth/test').then((response: any)=>{
+            //     response.json().then((res: any)=> console.log(res.massege))
+            // })
         }else{
             console.log(email)
             console.log(password)
