@@ -1,32 +1,41 @@
 'use client'
 
 import { useRef, useState } from "react";
-import { SignInType } from "../_types/types";
+import { ShowWindowType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
 import { AuthController } from "../_controllers/AuthController";
 import Axios from 'axios';
+import { useCustomTokenWindowContext } from "../_context/Context";
 
-const SignIn = (props: SignInType) =>{
+const SignIn = (props: ShowWindowType) =>{
     const [isByEmail, setIsByEmail] = useState<boolean>(false);
     const [phone, setPhone] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const {showTokenWindow,setShowTokenWindow} = useCustomTokenWindowContext();
     const authController = new AuthController();
+    
     const btnHandler = () =>{
+        // ДАННУЮ ЛОГИКУ ВЫНЕСТИ В КОНТРОЛЛЕРЫ !!!
         if(!isByEmail){
             // Axios.defaults.withCredentials = true
             Axios.post('http://localhost:3005/auth/loginbyphone', {phone: phone}).then((response: any)=>{
-                console.log(response.data)
+                if(response.data === true){
+                    setShowTokenWindow(true);
+                }
+                else{
+                    console.log(response.data);
+                }
             })
-            // fetch('http://localhost:3005/auth/test').then((response: any)=>{
-            //     response.json().then((res: any)=> console.log(res.massege))
-            // })
         }else{
             console.log(email)
             console.log(password)
         }
+    }
+    if(showTokenWindow){
+        props.show = false;
     }
     return(
         <FormDefault 
@@ -66,7 +75,7 @@ const SignIn = (props: SignInType) =>{
                 margin="10px"
             />
         </FormDefault>
-    )
+    );
 }
 
 export default SignIn;

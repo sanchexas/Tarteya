@@ -20,9 +20,10 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('loginbyphone')
   loginByPhone(@Body() body: SignInPhoneDto, @Res() res: Response){
-    this.authService.loginByPhone(body).then(response=>{
-      res.send(response);
-    });
+    res.send(true);
+    // this.authService.loginByPhone(body).then(response=>{
+    //   res.send(response);
+    // });
   } 
   @Get('test')
   testMethod(@Res() res: Response){

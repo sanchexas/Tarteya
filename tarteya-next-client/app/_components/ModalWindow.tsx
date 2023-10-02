@@ -1,13 +1,13 @@
 'use client'
 
 import { CSSTransition } from 'react-transition-group';
-import { useCustomContext } from '../_context/Context';
+import { useCustomWindowContext } from '../_context/Context';
 import { useEffect, useRef, useState } from 'react';
 import Auth from './Auth';
 import Cart from './Cart';
 
 const ModalWindow = () =>{
-    const {showWindow, setShowWindow} = useCustomContext();
+    const {showWindow, setShowWindow} = useCustomWindowContext();
     const [isWindow, setIsWindow] = useState<boolean>(false);
     const [windowComponent, setWindowComponent] = useState<JSX.Element>();
     const nodeRef = useRef(null);

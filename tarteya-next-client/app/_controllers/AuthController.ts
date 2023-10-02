@@ -1,3 +1,5 @@
 export class AuthController{
-    hello(){}
+    loginByPhone(phone: string){
+        
+    }
 }

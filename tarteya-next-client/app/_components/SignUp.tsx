@@ -1,9 +1,9 @@
-import { SignUpType } from "../_types/types";
+import { ShowWindowType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
 
-const SignUp = (props: SignUpType) =>{
+const SignUp = (props: ShowWindowType) =>{
     return(
         <FormDefault 
             isMultipartData={false} 

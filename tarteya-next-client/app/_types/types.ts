@@ -5,6 +5,10 @@ export type ModalContextType = {
     showWindow: ShowWindow
     setShowWindow: React.Dispatch<React.SetStateAction<ShowWindow>>
 }
+export type TokenWindowContextType = {
+    showTokenWindow: boolean
+    setShowTokenWindow: React.Dispatch<React.SetStateAction<boolean>>
+}
 export type BtnDefaultProps = {
     content: string
     isSubmit: boolean 
@@ -31,10 +35,7 @@ export type FormDefaultType = {
     setSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
     styles?: React.CSSProperties
 }
-export type SignInType = {
-    show: boolean
-}
-export type SignUpType = {
+export type ShowWindowType = {
     show: boolean
 }
 export type IconButtonType = {

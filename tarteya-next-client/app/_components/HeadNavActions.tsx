@@ -1,10 +1,10 @@
 'use client'
 
-import { useCustomContext } from "../_context/Context";
+import { useCustomWindowContext } from "../_context/Context";
 import IconButton from "./IconButton";
 
 const HeadNavActions = () =>{
-    const {setShowWindow} = useCustomContext();
+    const {setShowWindow} = useCustomWindowContext();
 
     return(
         <div className="header__nav__actions">
