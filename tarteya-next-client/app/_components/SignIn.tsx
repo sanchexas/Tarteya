@@ -6,7 +6,6 @@ import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
 import { AuthController } from "../_controllers/AuthController";
-import Axios from 'axios';
 import { useCustomTokenWindowContext } from "../_context/Context";
 
 const SignIn = (props: ShowWindowType) =>{
@@ -20,15 +19,7 @@ const SignIn = (props: ShowWindowType) =>{
     const btnHandler = () =>{
         // ДАННУЮ ЛОГИКУ ВЫНЕСТИ В КОНТРОЛЛЕРЫ !!!
         if(!isByEmail){
-            // Axios.defaults.withCredentials = true
-            Axios.post('http://localhost:3005/auth/loginbyphone', {phone: phone}).then((response: any)=>{
-                if(response.data === true){
-                    setShowTokenWindow(true);
-                }
-                else{
-                    console.log(response.data);
-                }
-            })
+            
         }else{
             console.log(email)
             console.log(password)
