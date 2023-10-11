@@ -1,10 +1,10 @@
-import { Body, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Body, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
 import { SignInPhoneDto } from './_dto/SignPhone.dto';
 import { totp } from 'otplib';
 import { SmsAero, SmsAeroError, SmsAeroHTTPError  } from 'smsaero';
-import { ApiErrorCodes } from 'src/_errors/errors.status';
+import { GlobalResponseDto } from 'src/_dto/GlobalResponse.dto';
 
 @Injectable()
 export class AuthService {
@@ -23,31 +23,34 @@ export class AuthService {
                 refresh_token: await this.jwtService.signAsync(payload, {expiresIn: "1d"})
             };
         }else{
-            return {
+            throw new UnauthorizedException({
                 message: ["Неверные данные"], 
-                statusCode: ApiErrorCodes.AUTH_ERROR_CODE
-            };
-        }
+                statusCode: HttpStatus.BAD_REQUEST
+            }
+)       }
     }
     /**
      *  1) проверка на существование телефона в базе userService
      *  2) генерация токена
      *  3) отправка смс
      */
-    async loginByPhone(data: SignInPhoneDto){
+    async loginByPhone(data: SignInPhoneDto): Promise<GlobalResponseDto>{
         const tp = this.trimPhone(data.phone);
         console.log(tp)
         const userExist = await this.userService.findByPhone(tp);
         if(userExist){
-            const token = this.generateTokenTotp();
-            this.sendSmsWithToken(token, tp);
-            return true;
-        }else{
+            // const token = this.generateTokenTotp();
+            // this.sendSmsWithToken(token, tp);
             return {
-                message: ["Пользователя с таким номером телефона не существует"], 
-                statusCode: ApiErrorCodes.AUTH_ERROR_CODE
-            };
+                statusCode: HttpStatus.ACCEPTED
+            }
         }
+        return {
+            message: ["Пользователя с таким номером телефона не существует"],
+            statusCode: HttpStatus.BAD_REQUEST
+        }
+        
+            
     }
     async loginByEmail(){
 
@@ -60,14 +63,16 @@ export class AuthService {
         }; // В целом токен живет 6 минут, но новый генерится каждые 120 секунд
         return totp.generate(this.secret);
     }
-    verufyTokenTotp(@Body() body: {user_token: string}){
+    verufyTokenTotp(@Body() body: {user_token: string}): GlobalResponseDto{
         const verify = totp.verify({token: body.user_token, secret: this.secret});
         if(verify){
-            return true;
+            return {
+                statusCode: HttpStatus.ACCEPTED
+            }
         }else{
             return {
                 message: ["Неверный код, попробуйте ввести снова"],
-                statusCode: ApiErrorCodes.AUTH_ERROR_CODE
+                statusCode: HttpStatus.BAD_REQUEST
             };
         }
     }

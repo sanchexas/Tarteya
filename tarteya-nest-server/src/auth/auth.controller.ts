@@ -2,15 +2,15 @@ import { Body, Controller, Post, Request,HttpCode, HttpStatus, UsePipes, Validat
 import { AuthService } from './auth.service';
 import { SignInPhoneDto } from './_dto/SignPhone.dto';
 import { AuthGuard } from '../_guards/auth.guard';
-import { authenticator, totp, hotp } from 'otplib';
-import { SmsAero, SmsAeroError, SmsAeroHTTPError  } from 'smsaero';
-import { Response, response } from 'express';
+import { Response } from 'express';
 
 @Controller('auth')
 @UsePipes(ValidationPipe)
 export class AuthController {
   private secret = 'AIIQ6BJHMU5TY7RI';
+
   constructor(private authService: AuthService) {}
+
   @HttpCode(HttpStatus.OK)
   @Post('login')
   signIn(@Body() signInDto: SignInPhoneDto) {
@@ -20,10 +20,10 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('loginbyphone')
   loginByPhone(@Body() body: SignInPhoneDto, @Res() res: Response){
-    res.send(true);
-    // this.authService.loginByPhone(body).then(response=>{
-    //   res.send(response);
-    // });
+    // res.send(true);
+    this.authService.loginByPhone(body).then(response=>{
+      res.send(response);
+    });
   } 
   @Get('test')
   testMethod(@Res() res: Response){

@@ -5,7 +5,7 @@ import { ShowWindowType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
-import { AuthController } from "../_controllers/AuthController";
+import { AuthController } from '../_controllers/AuthController';
 import { useCustomTokenWindowContext } from "../_context/Context";
 
 const SignIn = (props: ShowWindowType) =>{
@@ -17,12 +17,14 @@ const SignIn = (props: ShowWindowType) =>{
     const authController = new AuthController();
     
     const btnHandler = () =>{
-        // ДАННУЮ ЛОГИКУ ВЫНЕСТИ В КОНТРОЛЛЕРЫ !!!
         if(!isByEmail){
-            
+            authController.loginByPhone(phone)
+            .then((response)=>{
+                if(response) setShowTokenWindow(response.statusCode < 400 ? true : false);
+            });
         }else{
-            console.log(email)
-            console.log(password)
+            console.log(email);
+            console.log(password);
         }
     }
     if(showTokenWindow){

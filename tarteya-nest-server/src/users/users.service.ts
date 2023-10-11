@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Catch, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { EntityNotFoundError, Repository } from 'typeorm';
 import { User } from './users.entity';
 import { CreateUserDto } from './_dto/CreateUser.dto';
 @Injectable()
