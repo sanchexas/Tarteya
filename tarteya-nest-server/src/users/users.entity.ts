@@ -5,9 +5,9 @@ import { Entity, Column, ManyToOne, Index, PrimaryColumn } from 'typeorm';
 export class Users{
     @PrimaryColumn({length: 36})
     id_user: string
-    @Column({length: 50})
+    @Column({length: 50, nullable: true})
     name: string
-    @Column({length: 100})
+    @Column({length: 100, nullable: true})
     surname: string
     @Column({length: 60, nullable: true})
     patronymic: string
@@ -20,4 +20,4 @@ export class Users{
     @ManyToOne(()=>Roles, (role)=> role.user, {nullable: false})
     @Index('role_id_idx')
     role: Roles | number
-}
+} 

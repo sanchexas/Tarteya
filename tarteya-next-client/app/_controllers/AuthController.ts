@@ -8,7 +8,10 @@ export class AuthController{
                 return response.data
             }).catch((error: AxiosError<ServerResponse>) => {
                 let e = error.response
-                if (e) return e.data
+                if (e) {
+                    console.log(e.data)
+                    return e.data
+                }
             });
         return res;
     }

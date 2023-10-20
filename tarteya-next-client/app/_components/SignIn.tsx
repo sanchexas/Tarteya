@@ -7,6 +7,7 @@ import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
 import { AuthController } from '../_controllers/AuthController';
 import { useCustomTokenWindowContext } from "../_context/Context";
+import { ErrorMessage } from "./ErrorMessage";
 
 const SignIn = (props: ShowWindowType) =>{
     const [isByEmail, setIsByEmail] = useState<boolean>(false);
@@ -14,13 +15,24 @@ const SignIn = (props: ShowWindowType) =>{
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const {showTokenWindow,setShowTokenWindow} = useCustomTokenWindowContext();
+    const [errorMessages, setErrorMessages] = useState<JSX.Element[]>();
     const authController = new AuthController();
     
     const btnHandler = () =>{
         if(!isByEmail){
             authController.loginByPhone(phone)
             .then((response)=>{
-                if(response) setShowTokenWindow(response.statusCode < 400 ? true : false);
+                if(response){
+                    if(response.statusCode < 400){
+                        setShowTokenWindow(true);
+                    }else{
+                        setErrorMessages(response.message.map((err, i)=>{
+                            return(
+                                <ErrorMessage message={err} key={i}/>
+                            );
+                        }));
+                    }
+                }
             });
         }else{
             console.log(email);
@@ -47,7 +59,10 @@ const SignIn = (props: ShowWindowType) =>{
                 >
                     {!isByEmail ? "E-mail" : "Телефона"}
                 </span>
-            .</span> 
+            .</span>
+            <div style={{width: '100%', display: errorMessages ? "flex" : "none", flexDirection: "column", marginBottom: "30px"}}>
+                {errorMessages}
+            </div>
             <InputDefault 
                 label={isByEmail ? "E-mail" : "Номер телефона"} 
                 type={isByEmail ? "email" : "tel"}

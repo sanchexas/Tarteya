@@ -43,3 +43,7 @@ export type IconButtonType = {
     svgElement: ReactElement<SVGElement>
     handler: (event?: React.MouseEvent<HTMLButtonElement>) => void
 }
+export type ErrorMessageType = {
+    message: string
+    key: number
+}
