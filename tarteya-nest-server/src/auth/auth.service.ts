@@ -39,8 +39,8 @@ export class AuthService {
         console.log(tp)
         const userExist = await this.userService.findByPhone(tp);
         if(userExist){
-            // const token = this.generateTokenTotp();
-            // this.sendSmsWithToken(token, tp);
+            const token = this.generateTokenTotp();
+            this.sendSmsWithToken(token, tp);
             return {
                 statusCode: HttpStatus.ACCEPTED
             }
