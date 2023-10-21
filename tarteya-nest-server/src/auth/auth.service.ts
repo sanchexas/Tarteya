@@ -1,10 +1,10 @@
 import { Body, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { SignInPhoneDto } from './_dto/SignPhone.dto';
 import { totp } from 'otplib';
-import { SmsAero, SmsAeroError, SmsAeroHTTPError  } from 'smsaero';
-import { GlobalResponseDto } from 'src/_dto/GlobalResponse.dto';
+import { SmsAero, SmsAeroError, SmsAeroHTTPError } from 'smsaero';
+import { GlobalResponseDto } from '../_dto/GlobalResponse.dto';
 
 @Injectable()
 export class AuthService {
@@ -49,8 +49,6 @@ export class AuthService {
             message: ["Пользователя с таким номером телефона не существует"],
             statusCode: HttpStatus.BAD_REQUEST
         }
-        
-            
     }
     async loginByEmail(){
 
@@ -83,7 +81,7 @@ export class AuthService {
         });
     }
     // Превращает '+7 000 000-00-00' в '+70000000000'
-    private trimPhone(phone: string): string{
+    public trimPhone(phone: string): string{
         return phone.replace(/[-\s]/gi, '');
     }
 }

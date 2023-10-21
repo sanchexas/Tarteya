@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ShowWindowType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";

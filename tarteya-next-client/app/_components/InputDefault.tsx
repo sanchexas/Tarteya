@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, createRef } from "react";
+
 import { InputDefaultType } from "../_types/types";
 import InputMask from "react-input-mask";
 /**
@@ -12,10 +12,11 @@ const InputDefault = (props: InputDefaultType) =>{
                 <label htmlFor={`#${props.idForLabel}`}>{props.label}</label>
                 <div>
                     <InputMask
-                        mask='+7 999 999-99-99' 
+                        mask='+7 999 999 99 99' 
                         value={props.value} 
                         onChange={props.setChange}
                         alwaysShowMask
+                        maskPlaceholder={" "}
                     >
                         <input type="tel" id={`#${props.idForLabel}`}/>
                     </InputMask>
