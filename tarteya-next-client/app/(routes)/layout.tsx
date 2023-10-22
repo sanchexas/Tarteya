@@ -9,6 +9,10 @@ import type { Metadata } from 'next';
 
 // const montserrat = Montserrat({weight: "700"});
 
+/**
+ * Необходимо сделать:
+ * 1 - брать префикс api из env файла
+ */
 export const metadata: Metadata = {
   title: 'Тартея',
   description: '',

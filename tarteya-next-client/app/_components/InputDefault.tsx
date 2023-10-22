@@ -23,6 +23,24 @@ const InputDefault = (props: InputDefaultType) =>{
                 </div>
             </div>
         );
+    }else if(props.type === 'token'){
+        return(
+            <div className="form__default__item" style={{width: `${props.widthPercents}%`, ...props.styles}}>
+                <label htmlFor={`#${props.idForLabel}`}>{props.label}</label>
+                <br />
+                <div style={{border: "none"}}>
+                    <InputMask
+                        mask='9 9 9 9'
+                        value={props.value}
+                        onChange={props.setChange}
+                        alwaysShowMask
+                        maskPlaceholder={"_"}
+                    >
+                        <input type="text" id={`#${props.idForLabel}`} style={{textAlign: 'center',fontSize: '30px', fontFamily: "MB", color: "#F08A10", letterSpacing: "10px"}}/>
+                    </InputMask>
+                </div>
+            </div>
+        );
     }
     return(
         <div className="form__default__item" style={{width: `${props.widthPercents}%`, ...props.styles}}>

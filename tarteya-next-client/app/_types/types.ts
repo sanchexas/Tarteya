@@ -16,7 +16,7 @@ export type BtnDefaultProps = {
     margin?: string
 }
 export type InputDefaultType = {
-    type: "tel" | "password" | "text" | "email"
+    type: "tel" | "password" | "text" | "email" | "token"
     label: string
     idForLabel: string
     reff?: LegacyRef<HTMLInputElement>

@@ -16,7 +16,10 @@ export class AuthController{
         return res;
     }
     verifyToken(token: string){
-
+        const res = Axios.post<ServerResponse>('http://localhost:3005/auth/verifytoken', { user_token: token }, {withCredentials: true})
+            .then((response) => {
+                console.log(response.data);
+            })
     }
     loginByEmail(){
 
