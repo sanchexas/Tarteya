@@ -13,22 +13,6 @@ export class AuthService {
         private userService: UsersService, 
         private jwtService: JwtService
     ){}
-
-    async signIn(data: SignInPhoneDto){
-        const user = await this.userService.findByPhone(data.phone)
-        if(user && user.phone === data.phone){
-            const payload = { id: user.id_user, phone: user.phone };
-            return {
-                access_token: await this.jwtService.signAsync(payload),
-                refresh_token: await this.jwtService.signAsync(payload, {expiresIn: "1d"})
-            };
-        }else{
-            throw new UnauthorizedException({
-                message: ["Неверные данные"], 
-                statusCode: HttpStatus.BAD_REQUEST
-            }
-)       }
-    }
     /**
      *  1) проверка на существование телефона в базе userService
      *  2) генерация токена
@@ -41,8 +25,12 @@ export class AuthService {
         if(userExist){
             const token = this.generateTokenTotp();
             this.sendSmsWithToken(token, tp);
+            console.log(userExist.phone)
             return {
-                statusCode: HttpStatus.ACCEPTED
+                statusCode: HttpStatus.ACCEPTED,
+                data: {
+                    tp: userExist.phone
+                }
             }
         }
         return {
@@ -61,11 +49,17 @@ export class AuthService {
         }; // В целом токен живет 6 минут, но новый генерится каждые 120 секунд
         return totp.generate(this.secret);
     }
-    verufyTokenTotp(@Body() body: {user_token: string}): GlobalResponseDto{
+    public async verifyTokenTotp(@Body() body: {user_token: string}, cookiePhone: string): Promise<GlobalResponseDto>{
         const verify = totp.verify({token: body.user_token, secret: this.secret});
         if(verify){
+            const user = await this.userService.findByPhone(cookiePhone);
+            const payload = {id_user: user.id_user, phone: user.phone};
             return {
-                statusCode: HttpStatus.ACCEPTED
+                statusCode: HttpStatus.ACCEPTED,
+                data: {
+                    access_token: await this.jwtService.signAsync(payload),
+                    refresh_token: await this.jwtService.signAsync(payload, {expiresIn: "1d"})
+                }
             }
         }else{
             return {

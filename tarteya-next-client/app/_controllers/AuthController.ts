@@ -2,7 +2,7 @@ import Axios, { AxiosError } from 'axios'
 import { ServerResponse } from '../_types/dtos';
 export class AuthController{
     loginByPhone(phone: string){
-        const res = Axios.post<ServerResponse>('http://localhost:3005/auth/loginbyphone', { phone: phone })
+        const res = Axios.post<ServerResponse>('http://localhost:3005/auth/loginbyphone', { phone: phone }, {withCredentials: true})
             .then((response) => {
                 console.log(response.data)
                 return response.data
