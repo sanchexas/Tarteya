@@ -5,3 +5,7 @@ export type ServerResponse<T = any> = {
     message: string[]
     data?: T
 }
+export type TokenResponse = {
+    access_token: string
+    refresh_token: string
+}

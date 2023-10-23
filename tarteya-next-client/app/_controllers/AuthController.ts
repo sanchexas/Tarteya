@@ -4,13 +4,11 @@ export class AuthController{
     loginByPhone(phone: string){
         const res = Axios.post<ServerResponse>('http://localhost:3005/auth/loginbyphone', { phone: phone }, {withCredentials: true})
             .then((response) => {
-                console.log(response.data)
-                return response.data
+                return response.data;
             }).catch((error: AxiosError<ServerResponse>) => {
-                let e = error.response
-                if (e) {
-                    console.log(e.data)
-                    return e.data
+                let e = error.response;
+                if(e){
+                    return e.data;
                 }
             });
         return res;
@@ -18,8 +16,14 @@ export class AuthController{
     verifyToken(token: string){
         const res = Axios.post<ServerResponse>('http://localhost:3005/auth/verifytoken', { user_token: token }, {withCredentials: true})
             .then((response) => {
-                console.log(response.data);
-            })
+                return response.data;
+            }).catch((error: AxiosError<ServerResponse>)=>{
+                 let e = error.response;
+                 if(e){
+                    return e.data;
+                 }
+            });
+        return res;
     }
     loginByEmail(){
 
