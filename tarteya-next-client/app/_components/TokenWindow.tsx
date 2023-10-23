@@ -17,10 +17,10 @@ const TokenWindow = (props: ShowWindowType): JSX.Element =>{
             authController.verifyToken(trimmedToken).then((response)=>{
                 if(response){
                     if(response.statusCode < 400){
-                        const tokenController = new TokenController();
+                        const tokenController: TokenController = new TokenController();
                         tokenController.setLocalStorageToken(response.data);
                         document.location.reload();
-                    }else{
+                    }else{ 
                         setErrorMessages(response.message.map((err, i )=>{
                             return(
                                 <ErrorMessage message={err} key={i}/>
@@ -28,9 +28,9 @@ const TokenWindow = (props: ShowWindowType): JSX.Element =>{
                         }));
                     }
                 }
-            })
+            });
 
-            // ДОДЕЛАТЬ !!!
+            // ДОДЕЛАТЬ !!! Добавить повторную отправку токена через определенный интервал времени!
 
         }
     }, [token]);
