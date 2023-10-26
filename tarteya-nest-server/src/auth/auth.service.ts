@@ -68,6 +68,7 @@ export class AuthService {
             };
         }
     }
+    // сделать обработчик ошибок!
     private sendSmsWithToken(token: string, phone: string){
         const client = new SmsAero('sanchesperess@mail.ru', `${process.env.SMS_AERO_KEY}`);
         client.send(`${phone}`, `ТАРТЕЯ- ${token} -код подтверждения`).then(()=>{

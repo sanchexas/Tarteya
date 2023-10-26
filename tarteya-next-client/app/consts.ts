@@ -1,0 +1,1 @@
+export const TOKEN_COUNT_DOWN_TIMER_SECONDS = 120;

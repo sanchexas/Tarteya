@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, LegacyRef, ReactElement, ReactNode, ReactSVG, ReactSVGElement, SVGProps } from "react";
+import { ComponentPropsWithoutRef, Dispatch, LegacyRef, ReactElement, ReactNode, ReactSVG, ReactSVGElement, SVGProps, SetStateAction } from "react";
 
 export type ShowWindow = "auth" | "cart" | false;
 export type ModalContextType = {
@@ -10,10 +10,12 @@ export type TokenWindowContextType = {
     setShowTokenWindow: React.Dispatch<React.SetStateAction<boolean>>
 }
 export type BtnDefaultProps = {
-    content: string
+    content: string | JSX.Element | JSX.Element[]
     isSubmit: boolean 
     func?: (event?: React.MouseEvent<HTMLButtonElement>) => void
     margin?: string
+    styles?: React.CSSProperties
+    isDisabled?: boolean
 }
 export type InputDefaultType = {
     type: "tel" | "password" | "text" | "email" | "token"
@@ -46,4 +48,8 @@ export type IconButtonType = {
 export type ErrorMessageType = {
     message: string
     key: number
+}
+export type CountDownHookType = {
+    secLeft: number
+    start: (sec: number) => void
 }

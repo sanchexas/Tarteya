@@ -180,6 +180,10 @@ nav a:hover{
 .btn__default:hover{
     background: #dd8110;
 }
+.disabled{
+    cursor: not-allowed;
+    opacity: 0.8;
+}
 .headlogo{
     position: absolute;
     left: -100px;
@@ -292,4 +296,5 @@ nav a:hover{
     width: 80%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
