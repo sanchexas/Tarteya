@@ -9,3 +9,9 @@ export type TokenResponse = {
     access_token: string
     refresh_token: string
 }
+export type CreateUserDto = {
+    phone: string
+    email: string
+    password: string
+    repPassword: string
+}

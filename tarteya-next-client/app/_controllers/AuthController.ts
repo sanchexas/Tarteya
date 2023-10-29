@@ -1,29 +1,11 @@
-import Axios, { AxiosError } from 'axios'
-import { ServerResponse } from '../_types/dtos';
+import { defaultAxiosHandler } from '../_utils/defaultAxiosHandler';
 export class AuthController{
+    
     loginByPhone(phone: string){
-        const res = Axios.post<ServerResponse>('http://localhost:3005/auth/loginbyphone', { phone: phone }, {withCredentials: true})
-            .then((response) => {
-                return response.data;
-            }).catch((error: AxiosError<ServerResponse>) => {
-                let e = error.response;
-                if(e){
-                    return e.data;
-                }
-            });
-        return res;
+        return defaultAxiosHandler("/auth/loginbyphone", "post", {phone: phone}, {withCredentials: true});
     }
     verifyToken(token: string){
-        const res = Axios.post<ServerResponse>('http://localhost:3005/auth/verifytoken', { user_token: token }, {withCredentials: true})
-            .then((response) => {
-                return response.data;
-            }).catch((error: AxiosError<ServerResponse>)=>{
-                 let e = error.response;
-                 if(e){
-                    return e.data;
-                 }
-            });
-        return res;
+        return defaultAxiosHandler("/auth/verifytoken", "post" ,{user_token: token}, {withCredentials: true});
     }
     loginByEmail(){
 

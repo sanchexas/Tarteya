@@ -1,9 +1,15 @@
+'use client'
+
+import { useState } from "react";
 import { ShowWindowType } from "../_types/types";
 import ButtonDefault from "./ButtonDefault";
 import FormDefault from "./FormDefault";
 import InputDefault from "./InputDefault";
+import { AuthController } from "../_controllers/AuthController";
 
 const SignUp = (props: ShowWindowType) =>{
+    const [errorMessages, setErrorMessages] = useState<JSX.Element[]>();
+    const authController = new AuthController();
     return(
         <FormDefault 
             isMultipartData={false} 

@@ -11,7 +11,9 @@ import useCountDown from "../_utils/useCountDown";
 import { TOKEN_COUNT_DOWN_TIMER_SECONDS } from "../consts";
 import Cookies from "universal-cookie";
 import { ErrorMapper } from "../_utils/ErrorMapper";
-
+/** 
+ *  Компонент TokenWindow отображает окно с полем для введения токена (кода), который пришел пользователю на телефон по СМС
+ */
 const TokenWindow = (props: ShowWindowType): JSX.Element =>{
     const [token, setToken] = useState<string>('');
     const [errorMessages, setErrorMessages] = useState<JSX.Element[]>();
