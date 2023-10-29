@@ -36,7 +36,7 @@ const InputDefault = (props: InputDefaultType) =>{
                         alwaysShowMask
                         maskPlaceholder={"_"}
                     >
-                        <input type="text" id={`#${props.idForLabel}`} style={{textAlign: 'center',fontSize: '30px', fontFamily: "MB", color: "#F08A10", letterSpacing: "10px"}}/>
+                        <input type="text" ref={props.reff} id={`#${props.idForLabel}`} style={{textAlign: 'center',fontSize: '30px', fontFamily: "MB", color: "#F08A10", letterSpacing: "10px"}}/>
                     </InputMask>
                 </div>
             </div>

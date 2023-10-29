@@ -21,7 +21,7 @@ export type InputDefaultType = {
     type: "tel" | "password" | "text" | "email" | "token"
     label: string
     idForLabel: string
-    reff?: LegacyRef<HTMLInputElement>
+    reff?: React.RefObject<HTMLInputElement>
     name?: string
     value?: string | number
     setChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
