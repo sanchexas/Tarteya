@@ -4,10 +4,10 @@ import { useState } from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import TokenWindow from "./TokenWindow";
-import { useCustomTokenWindowContext } from "../_context/Context";
+import { useCustomIsSignInContext, useCustomTokenWindowContext } from "../_context/Context";
 
 const Auth = () =>{
-    const [isSignIn, setIsSignIn] = useState<boolean>(true);
+    const {isSignIn, setIsSignIn} = useCustomIsSignInContext();
     const {showTokenWindow} = useCustomTokenWindowContext()
     return(
         <div className="auth__window">

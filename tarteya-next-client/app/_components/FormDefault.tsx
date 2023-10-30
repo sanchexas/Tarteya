@@ -7,6 +7,7 @@ const FormDefault = (props: FormDefaultType) =>{
             method={props.method} 
             encType={props.isMultipartData ? 'multipart/form-data' : ''}
             style={props.styles}
+            onSubmit={props.setSubmit}
         >
             <h2 className="form__title__default">{props.title}</h2>
             {props.children}

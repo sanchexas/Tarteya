@@ -6,10 +6,11 @@ export class CreateUserDto {
     email?: string
     @IsPhoneNumber('RU', {message: "Некорректный номер телефона"})
     phone: string
-    @IsNotEmpty()
+    @IsNotEmpty({message: "Введите пароль"})
     @MaxLength(300, {message: "Пароль не должен содержать больше 300 символов"})
     @MinLength(8, {message: "Пароль не должен быть менее 8 символов"})
     password: string
+    reppassword: string
     @IsOptional()
     role: number
 }

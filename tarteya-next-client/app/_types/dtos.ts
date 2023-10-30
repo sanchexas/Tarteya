@@ -13,5 +13,5 @@ export type CreateUserDto = {
     phone: string
     email: string
     password: string
-    repPassword: string
+    reppassword: string
 }

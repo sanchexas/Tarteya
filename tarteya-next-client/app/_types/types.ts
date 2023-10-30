@@ -9,6 +9,10 @@ export type TokenWindowContextType = {
     showTokenWindow: boolean
     setShowTokenWindow: React.Dispatch<React.SetStateAction<boolean>>
 }
+export type IsSignInContextType = {
+    isSignIn: boolean
+    setIsSignIn: React.Dispatch<React.SetStateAction<boolean>>
+}
 export type BtnDefaultProps = {
     content: string | JSX.Element | JSX.Element[]
     isSubmit: boolean 
@@ -18,7 +22,7 @@ export type BtnDefaultProps = {
     isDisabled?: boolean
 }
 export type InputDefaultType = {
-    type: "tel" | "password" | "text" | "email" | "token"
+    type: "tel" | "password" | "text" | "email" | "token" | "checkbox"
     label: string
     idForLabel: string
     reff?: React.RefObject<HTMLInputElement>

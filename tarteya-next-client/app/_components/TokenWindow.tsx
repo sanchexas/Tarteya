@@ -4,7 +4,6 @@ import { ShowWindowType } from "../_types/types";
 import InputDefault from "./InputDefault";
 import { AuthController } from "../_controllers/AuthController";
 import { useEffect, useRef, useState } from "react";
-import { ErrorMessage } from "./ErrorMessage";
 import { TokenController } from "../_controllers/TokenController";
 import ButtonDefault from "./ButtonDefault";
 import useCountDown from "../_utils/useCountDown";
@@ -22,7 +21,7 @@ const TokenWindow = (props: ShowWindowType): JSX.Element =>{
     const phoneCookie = new Cookies();
     const tokenInputRef = useRef<HTMLInputElement>(null);
     
-    const buttonHandler = (): void =>{
+            const buttonHandler = (): void =>{
         authController.loginByPhone(phoneCookie.get('_tp')).then((response)=>{
             if(response){
                 if(response.statusCode < 400){

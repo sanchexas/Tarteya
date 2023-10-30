@@ -1,30 +1,37 @@
 'use client'
-import { createContext, useContext, useState, useSyncExternalStore } from "react";
-import { ShowWindow, ModalContextType, TokenWindowContextType } from "../_types/types";
+import { createContext, useContext, useState } from "react";
+import { ShowWindow, ModalContextType, TokenWindowContextType, IsSignInContextType } from "../_types/types";
 
 
 export const ModalWindowContext = createContext<ModalContextType | null>(null);
 export const TokenWindowContext = createContext<TokenWindowContextType | null>(null);
+export const IsSignInContext = createContext<IsSignInContextType | null>(null);
 
 export default function ContextProvider({children}: any){
 
     const [showWindow, setShowWindow] = useState<ShowWindow>(false);
     const [showTokenWindow, setShowTokenWindow] = useState<boolean>(false);
+    const [isSignIn, setIsSignIn] = useState<boolean>(true);
 
     // В конструкции return можно оборачивать контекст-провайдеры друг в друга. 
     // Для каждого контекста необходимо писать свой кастомный хук. 
     return(
-        <TokenWindowContext.Provider value={{
+        <IsSignInContext.Provider value={{
+            isSignIn,
+            setIsSignIn
+        }}>
+            <TokenWindowContext.Provider value={{
             showTokenWindow,
             setShowTokenWindow
-        }}>
-            <ModalWindowContext.Provider value={{
-                showWindow,
-                setShowWindow
             }}>
-                {children}
-            </ModalWindowContext.Provider>
-        </TokenWindowContext.Provider>
+                <ModalWindowContext.Provider value={{
+                    showWindow,
+                    setShowWindow
+                }}>
+                    {children}
+                </ModalWindowContext.Provider>
+            </TokenWindowContext.Provider>
+        </IsSignInContext.Provider>
     );
 }
 // Можно как-то оптимизировать...
@@ -43,6 +50,15 @@ export const useCustomTokenWindowContext = (): TokenWindowContextType =>{
     if(!context){
         throw new Error(
             "useCustomTokenWindowContext может вызываться только внутри ContextProvider"
+        );
+    }
+    return context;
+}
+export const useCustomIsSignInContext = () =>{
+    const context = useContext(IsSignInContext);
+    if(!context){
+        throw new Error(
+            "useCustomIsSignInContext может вызываться только внутри ContextProvider"
         );
     }
     return context;

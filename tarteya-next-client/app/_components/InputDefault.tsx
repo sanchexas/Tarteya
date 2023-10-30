@@ -17,6 +17,7 @@ const InputDefault = (props: InputDefaultType) =>{
                         onChange={props.setChange}
                         alwaysShowMask
                         maskPlaceholder={" "}
+                        name={props.name}
                     >
                         <input type="tel" id={`#${props.idForLabel}`}/>
                     </InputMask>
@@ -40,6 +41,15 @@ const InputDefault = (props: InputDefaultType) =>{
                     </InputMask>
                 </div>
             </div>
+        );
+    }else if(props.type === 'checkbox'){
+
+        // ДОДЕЛАТЬ СОГЛАШЕНИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ!!!
+
+        return(
+            <>  
+            <input type="checkbox"/><label htmlFor={`#${props.idForLabel}`}>{props.label}</label> 
+            </>
         );
     }
     return(
