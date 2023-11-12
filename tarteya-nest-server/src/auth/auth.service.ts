@@ -8,7 +8,7 @@ import { GlobalResponseDto } from '../_dto/GlobalResponse.dto';
 
 @Injectable()
 export class AuthService {
-    private secret = 'AIIQ6BJHMU5TY7RI';
+    private secret = process.env.GENERATE_TOTP_TOKEN_SECRET;
     constructor(
         private userService: UsersService, 
         private jwtService: JwtService
@@ -20,16 +20,14 @@ export class AuthService {
      */
     async loginByPhone(data: SignInPhoneDto): Promise<GlobalResponseDto>{
         const tp = this.trimPhone(data.phone);
-        console.log(tp)
         const userExist = await this.userService.findByPhone(tp);
         if(userExist){
             const token = this.generateTokenTotp();
             this.sendSmsWithToken(token, tp);
-            console.log(userExist.phone)
             return {
                 statusCode: HttpStatus.ACCEPTED,
                 data: {
-                    tp: userExist.phone
+                    tp: userExist.phone,
                 }
             }
         }
